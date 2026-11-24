@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build files
+x64/
+Debug/
+Release/
+
+.vs/
+x64/
+Debug/
+Realease/
+*.user
+*.suo
