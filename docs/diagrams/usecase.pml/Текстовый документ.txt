@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Администратор / Регистратура" as Admin
+actor "Врач" as Doctor
+actor "Пациент" as Patient
+
+rectangle "Система учёта расписания врачей" {
+usecase "Управление списком врачей \ специализациями" as UC_Doctors
+usecase "Составление и редактирование \ расписания приёмов" as UC_Schedule
+usecase "Учёт больничных, отпусков \ переносов приёмов" as UC_Absences
+usecase "Просмотр своего расписания" as UC_ViewDoctor
+usecase "Просмотр расписания врачей" as UC_ViewPatient
+usecase "Запись на приём / отмена записи" as UC_Booking
+usecase "Формирование отчётов по приёмам" as UC_Reports
+}
+
+Admin --> UC_Doctors
+Admin --> UC_Schedule
+Admin --> UC_Absences
+Admin --> UC_Booking
+Admin --> UC_Reports
+
+Doctor --> UC_ViewDoctor
+Doctor --> UC_Absences
+
+Patient --> UC_ViewPatient
+Patient --> UC_Booking
+
+UC_Booking ..> UC_ViewPatient : <include>
+UC_Reports ..> UC_Schedule : <include>
+@enduml
